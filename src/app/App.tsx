@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import {
   AppBar,
   Button,
@@ -11,7 +12,6 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Menu } from "@mui/icons-material";
 import { Login } from "features/auth/ui/login/login";
 import { TodolistsList } from "features/TodolistsList/TodolistsList";
 import { ErrorSnackbar } from "common/components";
@@ -43,14 +43,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <>
         <ErrorSnackbar />
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <IconButton edge="start" color="inherit" aria-label="menu">
-              <Menu />
+              <AddTaskIcon />
             </IconButton>
-            <Typography variant="h6">News</Typography>
+            <Typography variant="h6" sx={{marginLeft: 3}}><b>Task planner</b></Typography>
             {isLoggedIn && (
               <Button color="inherit" onClick={logoutHandler}>
                 Log out
@@ -65,7 +65,7 @@ function App() {
             <Route path={"/login"} element={<Login />} />
           </Routes>
         </Container>
-      </div>
+      </>
     </BrowserRouter>
   );
 }
